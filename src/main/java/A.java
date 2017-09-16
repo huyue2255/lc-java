@@ -11,6 +11,7 @@ public class A {
     public static List<String> f1() {
         List<String> a = Arrays.asList("a", "b", "C");
         return a;
+        //asdfasdfasdf
     }
 
     @Test
