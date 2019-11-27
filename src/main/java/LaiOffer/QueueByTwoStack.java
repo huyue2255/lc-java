@@ -1,13 +1,19 @@
 package LaiOffer;
 
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
  * Created by yuehu on 11/11/19.
+ * stack1: to buffer all new element (push x goes to stack1)
+ * stack2: to pop out the 1th element
+ * if stack 2 is empty: remove all ele from 1 -> 2, then pop ele from 2
+ * if stack 2 is not empty, then pop ele from 2
+ * TIME O(1)
  */
 public class QueueByTwoStack {
-    private LinkedList<Integer> in;
-    private LinkedList<Integer> out;
+    private Deque<Integer> in;
+    private Deque<Integer> out;
 
     public QueueByTwoStack() {
         in = new LinkedList<Integer>();
