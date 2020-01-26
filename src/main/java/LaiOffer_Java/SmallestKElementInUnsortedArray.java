@@ -47,8 +47,8 @@ public class SmallestKElementInUnsortedArray {
             return new int[0];
         }
 
-//        Queue<Integer> maxHeap = new PriorityQueue<Integer>(k,new MyComparator());
-        Queue<Integer> maxHeap = new PriorityQueue<Integer>(k, Collections.reverseOrder());
+        Queue<Integer> maxHeap = new PriorityQueue<Integer>(k,new MyComparator());
+//        Queue<Integer> maxHeap = new PriorityQueue<Integer>(k, Collections.reverseOrder());
         for (int i = 0; i < k; i++) {
             maxHeap.offer(array[i]);
         }
