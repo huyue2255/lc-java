@@ -25,7 +25,7 @@ public class ReverseLinkedList {
 
     public ListNode reverseLinkedListI(ListNode head) {
       if (head == null || head.next == null) return head;
-      ListNode newNode = reverseLinkedList(head.next);
+      ListNode newNode = reverseLinkedListI(head.next);
       head.next.next = head;
       head.next = null;
       return newNode;
