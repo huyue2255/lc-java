@@ -15,6 +15,11 @@ public class GraphNode {
         neighbors = new ArrayList<>();
     }
 
+    public GraphNode(int label, ArrayList<GraphNode> _neighbors) {
+        this.label = label;
+        neighbors = _neighbors;
+    }
+
 
 
 

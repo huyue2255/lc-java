@@ -32,10 +32,40 @@ public class MoveZeroToEnd {
         array[b] = tmp;
     }
 
+    public void moveZeroeII(int[] nums) {
+        int count= 0;
+        for(int i = 0; i <nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[count++] = nums[i];
+            }
+        }
+
+        while(nums.length - count > 0) {
+            nums[count++] = 0;
+        }
+
+    }
+
+    public void moveZeroeIII(int[] nums) {
+        int slow = 0;
+        int fast = 0;
+        while (fast < nums.length) {
+            if (nums[fast] != 0) {
+                nums[slow++] = nums[fast++];
+            } else {
+                fast++;
+            }
+        }
+        while (slow < nums.length) {
+            nums[slow++] = 0;
+        }
+
+    }
+
     public static void main(String[] args) {
         int[] array = {1,0,4,5,0,0,4,4,4,0,0,};
         MoveZeroToEnd s = new MoveZeroToEnd();
-        s.moveZeroI(array);
+        s.moveZeroeIII(array);
         System.out.println(Arrays.toString(array));
     }
 
