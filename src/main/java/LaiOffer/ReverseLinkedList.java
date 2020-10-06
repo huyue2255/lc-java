@@ -20,7 +20,6 @@ public class ReverseLinkedList {
            cur= nextNode;
        }
         return pre;
-
     }
 
     public ListNode reverseLinkedListI(ListNode head) {
@@ -41,10 +40,5 @@ public class ReverseLinkedList {
         l2.next = l3;
 
         System.out.println(l.reverseLinkedListI(l1).val);
-
-
-
     }
-
-
 }

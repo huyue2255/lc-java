@@ -11,35 +11,55 @@ import java.util.Queue;
  * Created by yuehu on 1/25/20.
  */
 public class LayerByLayer {
-    public List<List<Integer>> layerByLayer(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
+
+    // iterative
+    public List<List<Integer>> layerByLayerI(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
-            return list;
+            return res;
         }
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             // the list storing all the nodes on the current level.
-            List<Integer> curLayer = new ArrayList<Integer>();
+            List<Integer> list = new ArrayList<Integer>();
             // the size of current level
             int size = queue.size();
-
             //traverse all the nodes on the current level and
             // prepare for the next level.
             for (int i = 0; i < size; i++) {
                 TreeNode cur = queue.poll();
-                curLayer.add(cur.val);
                 if (cur.left != null) {
                     queue.offer(cur.left);
                 }
                 if (cur.right != null) {
                     queue.offer(cur.right);
                 }
+                list.add(cur.val);
             }
-            list.add(curLayer);
+            res.add(list);
         }
-        return list;
+        return res;
     }
+
+    // recursion
+    public List<List<Integer>> layerByLayer(TreeNode root) {
+         List<List<Integer>> res = new ArrayList<>();
+         if(root == null) return res;
+         helper(res,root,0);
+         return res;
+     }
+
+     public void helper(List<List<Integer>> res, TreeNode root,int level) {
+         if(root == null) return;
+         if(level == res.size()){
+             res.add(new ArrayList<>());
+         }
+         res.get(level).add(root.val);
+         helper(res,root.left,level+1);
+         helper(res,root.right,level+1);
+     }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
