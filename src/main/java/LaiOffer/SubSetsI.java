@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 public class SubSetsI {
-    //method 1: DFS solution
+    //method 1: DFS solution + input String
     public List<String> subSets(String set) {
         List<String> result = new ArrayList<String>();
         if (set == null) {
@@ -41,8 +41,8 @@ public class SubSetsI {
     }
 
 
-    //method 2: DFS solution
-    public List<String> subSetssII(String set) {
+    //method 2: DFS solution + input String
+    public List<String> subSetsI(String set) {
         List<String> result = new ArrayList<String>();
         if (set == null) {
             return result;
@@ -50,21 +50,39 @@ public class SubSetsI {
 
         char[] arraySet = set.toCharArray();
         StringBuilder sb = new StringBuilder();
-        helperII(arraySet, sb, 0, result);
+        helperI(arraySet, sb, 0, result);
         return result;
     }
 
-    private void helperII(char[] set, StringBuilder sb, int index, List<String> result) {
+    private void helperI(char[] set, StringBuilder sb, int index, List<String> result) {
         result.add(sb.toString());
         // maintains ascending order of the indices of picked characters
         // choose the next picked index (the smallest one can be picked is index)
 
         for (int i = index; i < set.length; i++) {
             sb.append(set[i]);
-            helperII(set, sb, i + 1, result);
+            helperI(set, sb, i + 1, result);
             sb.deleteCharAt(sb.length() - 1);
         }
     }
+
+    // method 3: DFS solution + input array
+    public List<List<Integer>> subSetsII(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length == 0) return res;
+        helperII(res, new ArrayList<Integer>(), nums, 0);
+        return res;
+    }
+
+    private void helperII(List<List<Integer>> res, List<Integer> list, int[] nums, int index) {
+        res.add(new ArrayList<>(list));
+        for (int i = index; i < nums.length; i++) {
+            list.add(nums[i]);
+            helperII(res, list, nums,index+1);
+            list.remove(list.size() - 1);
+        }
+    }
+
 
     public static void main(String[] args) {
         String res = "abc";
